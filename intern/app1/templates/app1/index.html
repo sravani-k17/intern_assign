@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+*
+{
+
+  box-sizing: border-box;
+}
+
+body
+{
+
+    background-image: url('https://cdlnws.a.ssl.fastly.net/image/upload/f_auto,q_auto/v1533058403/blog/College_Student_Studying_in_Coffee_Shop.jpg');
+background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+input[type=text],select {
+  width: 75%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=email]
+{
+  width: 75%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+label {
+  padding: 12px 12px 12px ;
+  display: inline-block;
+  font-weight: bold;
+
+}
+input[type=file]
+{
+  width: 75%;
+  padding: 12px;
+  border: 1px solid #ccc ;
+  border-radius: 4px;
+  resize: vertical;
+
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 30px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: rgba(100, 100, 100, 0.5);
+  padding: 50px;
+  width: 65%;
+  color:white;
+  text-align: center;
+
+}
+
+.col-15 {
+  float: left;
+  width: 13%;
+  margin-top: 6px;
+}
+
+.col-50 {
+  float: left;
+  width: 48%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-15, .col-50, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Fill out your details</h2>
+<center><div class="container">
+  <form action="{% url 'result' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-15">
+        <label for="fullname">Full Name</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="fullname" name="fullname" placeholder="Your name.." required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-15">
+        <label for="branch">Branch</label>
+      </div>
+      <div class="col-50">
+        <select id="branch" name="branch" required>
+          <option value="ece">ece</option>
+          <option value="cse">cse</option>
+          <option value="mech">mech</option>
+          <option value="civ">civ</option>
+
+        </select>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-15">
+        <label for="email">Email</label>
+      </div>
+      <div class="col-50">
+        <input type="email" id="email" name="email" placeholder="Your email.." required 
+    pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" >
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-15">
+        <label for="phone">Mobile</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="phone" name="phone" placeholder="Your mobile with country code.." minlength="10" maxlength="13" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-15">
+        <label for="image">upload a image</label>
+      </div>
+    <div class="col-50">
+      <input type="file" id="profile_pic" name="profile_pic" required>
+</div>
+</div>
+    <div class="row">
+     <div class="col-15">
+        <label for="video">upload a video</label>
+      </div>
+      <div class="col-50">
+    <input type="file" id="video" name="video" required>
+</div>
+</div>
+   <div class="row">
+    
+      <input type="submit" value="Submit">
+      
+    </div>
+  </form>
+  
+</div>
+</center>
+<br>
+<br>
+<center><div class="container"><form action="{% url 'display' %}">
+  <div class="row">
+  You can see your profiles here or you can visit url:app1/dispaly
+  <input type="submit" value =" click here to see previous profiles">
+</div>
+</form></div>
+</center>
+
+
+
+</body>
+</html>
